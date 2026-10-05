@@ -1,6 +1,7 @@
 # Spectrum
 
-## Интерактивная акустическая система с динамической светомузыкальной мини-сценой-визуализатором/Interactive Audio System with a Dynamic Light-and-Music Mini-Stage Visualizer
+## Интерактивная акустическая система с динамической светомузыкальной мини-сценой-визуализатором
+## Interactive Audio System with a Dynamic Light-and-Music Mini-Stage Visualizer
 
 Третьякова Елена Б01-511
 
@@ -24,4 +25,4 @@ The original PCM audio is encoded into an SBC stream on the transmitting device,
 
 The overall data flow is shown below.
 
-![Audio pipeline](assets/principal-graph-common.svg)
+![Audio pipeline](assets/structure-graph-common.svg)
