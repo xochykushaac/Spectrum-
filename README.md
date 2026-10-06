@@ -26,3 +26,17 @@ The original PCM audio is encoded into an SBC stream on the transmitting device,
 The overall data flow is shown below.
 
 ![Audio pipeline](assets/structure-graph-common.svg)
+
+## Ветка анализа аудио/Audio analysis path
+
+В ветке анализа ESP32 накапливает последовательные PCM-отсчёты в RAM и формирует из них аудиофрейм. Перед спектральным анализом фрейм предварительно обрабатывается, например с помощью оконной функции, после чего выполняется FFT, который позволяет перейти от временного представления сигнала к частотному. Для каждого фрейма мы получаем спектральные коэффициенты и можем оценивать энергию в разных диапазонах частот: bins объединяются в низкие, средние и высокие частоты, после чего для каждого диапазона рассчитывается его энергия. По последовательности таких фреймов можно получить несколько характеристик музыки, которые далее используются для управления эффектами.
+
+Общая схема этой части системы ниже. 
+
+---
+
+After SBC decoding, the system obtains PCM audio samples. One path is used for audio playback, while the second path is used for audio analysis and visual-effect control. In the analysis path, the ESP32 accumulates sequential PCM samples in RAM and groups them into audio frames. Each frame is preprocessed, for example using a window function, and then passed to the FFT, which converts the audio signal from the time domain into the frequency domain. For each frame, we obtain spectral coefficients and can estimate the energy contained in different frequency ranges: FFT bins are grouped into frequency bands such as low, mid, and high frequencies, and the energy of each band is calculated. By processing a sequence of such frames, the system can extract several characteristics of the music then used to control the visual effects.
+
+The overall data flow of this part of the system is shown below:
+
+![Audio analysis path](assets/structure-graph-analysispath-leds-strobs.svg)
