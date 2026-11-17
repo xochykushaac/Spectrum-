@@ -1,6 +1,8 @@
-#ifndef STROBE_TEST_HPP
-#define STROBE_TEST_HPP
+#pragma once
 
-void run_strobe_test();
+namespace strobe_test {
 
-#endif
+void Setup();
+void Loop();
+
+}  // namespace strobe_test
